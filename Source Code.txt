@@ -1,0 +1,100 @@
+Task 1
+
+ssh-keygen -t ed25519 -C "soumyapatra47@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@github.com
+
+git clone git@github.com:soumyapatra47-gif/flask-git-practice.git
+cd flask-git-practice/
+
+git switch -c soumyapatra47
+
+git add .
+git commit -m "Flask files added"
+git push -u origin soumyapatra47
+
+git switch -c main
+git merge soumyapatra47
+git push origin main
+
+Task 2
+
+git switch main
+git pull origin main
+git switch -c soumyapatra47_new
+
+git add data.json
+git commit -m "Updated Json File"
+git push -u origin soumyapatra47_new
+
+git switch main
+git merge soumyapatra47_new
+
+git push origin main
+
+Task 3
+
+git switch main
+git pull origin main
+git switch -c master_1
+git push -u origin master_1
+git switch main
+git switch -c master_2
+git push -u origin master_2
+
+git switch master_1
+code .
+git add .
+git commit -m "Frontend File Added"
+git push origin master_1
+
+git switch master_2
+code .
+git add .
+git commit -m "Add To-Do submission API with MongoDB"
+git push origin master_2
+
+git switch main
+git merge master_1
+git merge master_2
+git push origin main
+
+Task 4
+
+git switch master_1
+
+git add fronted.html
+git commit -m "Item ID Added"
+
+git add fronted.html
+git commit -m "Item UUID Added"
+
+git add fronted.html
+git commit -m "Item Hash Added"
+
+git log --oneline -3
+
+git push origin master_1
+
+git switch main
+git merge master_1
+git push origin main
+
+git log --oneline master_1
+git branch backup-main-before-reset
+ID_COMMIT="f4cd56c"
+git reset --soft "$ID_COMMIT^"
+git reset
+git restore --source="$ID_COMMIT" --worktree -- frontend.html
+git add frontend.html
+git commit -m "Recommited Item ID"
+git log --oneline -5
+git status
+
+git rebase main master_1
+git status
+git add frontend.html
+git rebase --continue
+git log --oneline --graph --decorate --all
+git push --force-with-lease origin main
+git push --force-with-lease origin master_1
